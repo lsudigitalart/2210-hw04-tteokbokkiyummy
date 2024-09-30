@@ -1,5 +1,5 @@
 let playerX, playerY;
-let catSit, fishImg, catWalkLeft, catWalkRight;
+let catSit, fishImg, catWalkLeft, catWalkRight, winScreen;
 let dots = [];
 let numDots = 10;
 let catSize = 50;
@@ -14,6 +14,7 @@ function preload() {
   fishImg = loadImage('fish.png');
   catWalkLeft = loadImage('catWalkLeft.png')
   catWalkRight = loadImage('catWalkRight.png')
+  winScreen = loadImage('winScreen.png')
 }
 
 function setup() {
@@ -73,7 +74,7 @@ function draw() {
 
   textSize(25);
   fill(56,82,178);
-  text(score,470,25)
+  text(score,450,25)
 
 }
 
@@ -121,4 +122,10 @@ function movePlayer() {
     fishMinSize = 30;
     fishMaxSize = 60;
   }
+
+  if (score >= 100){
+    background(255);
+    image(winScreen,0,0,width,height)
+    return;
+  }  
 }
