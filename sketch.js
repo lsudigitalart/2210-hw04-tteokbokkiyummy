@@ -1,8 +1,8 @@
 let playerX, playerY;
-let catSit, fishImg, catWalkLeft, catWalkRight, winScreen;
+let catSit, fishImg, catWalkLeft, catWalkRight, winScreen, backgroundImg;
 let dots = [];
 let numDots = 10;
-let catSize = 50;
+let catSize = 60;
 let playerSpeed = 5; 
 let score = 0;
 let catState;
@@ -15,6 +15,7 @@ function preload() {
   catWalkLeft = loadImage('catWalkLeft.png')
   catWalkRight = loadImage('catWalkRight.png')
   winScreen = loadImage('winScreen.png')
+  backgroundImg = loadImage('background.png')
 }
 
 function setup() {
@@ -38,7 +39,10 @@ function setup() {
 }
 
 function draw() {
-  background(220);
+  background(backgroundImg);
+  textSize(15);
+  textFont('Courier New');
+  text('Use arrow keys to move',10,475,300,90);
 
   // cat in canvas 
   image(catState, playerX - catSize / 2, playerY - catSize / 2, catSize, catSize);
@@ -57,7 +61,7 @@ function draw() {
     image(fishImg, dot.x-dot.size/2, dot.y-dot.size/2,dot.size,dot.size);
 
     // cat eat fish, make new fish 
-    if (dist(playerX, playerY, dot.x, dot.y) < (catSize / 4 + dot.size / 4)) {
+    if (dist(playerX, playerY, dot.x, dot.y) < (catSize / 2 + dot.size / 4)) {
       dots.splice(i, 1); // Remove the dot
 
       score++;
