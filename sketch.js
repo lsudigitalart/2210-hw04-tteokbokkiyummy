@@ -20,7 +20,7 @@ function preload() {
 
 function setup() {
   createCanvas(500, 500);
-
+  frameRate(60);
   // cat starting point 
   playerX = width / 2;
   playerY = height / 2;
